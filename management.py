@@ -22,7 +22,7 @@ def read_trainee_id():
 def read_first_name():
     while True:
         first_name = input("Please enter the trainee first name")
-        first_name = first_name.strip()
+        first_name = (first_name.strip())
         if len(first_name) >= 2:
             return first_name
         else:
@@ -117,7 +117,7 @@ def add_trainee():
 
     trainee = create_trainee()
 
-    trainee_db[trainee.Spartan.get_sparta_id()] = trainee
+    trainee_db[trainee.get_sparta_id()] = trainee
     print("The trainee was added to the list")
     save_to_json()
 
@@ -139,18 +139,21 @@ def save_to_json():
         trainee_dict = trainee_obj.__dict__
         temp_dict_of_dict[trainee_id] = trainee_dict
 
-    with open("data.json", "w") as data_file:
+    with open("data.json", "w+") as data_file:
         json.dump(temp_dict_of_dict, data_file)
 
 
 def load_from_json():
-    spartanList = []
-    with open('data.json', "r") as spartans:
-        #data = json.load(spartans)
+
+    with open('data.json', "r") as temp_dict_of_dict:
+        data = json.load(temp_dict_of_dict)
+        print(data)
+"""      
         for spartan in spartans:
             spartanDict = json.loads(spartan)
             #spartanList.append(spartanDict)
             print(spartanDict)
+"""
 def read_options():
     while True:
         options = input("Options: \nadd) Add an Trainee \nremove) Remove an Trainee\nlist) List of Trainees \nupdate) Update Trainee Data \nsave) Save \nload)Load\nexit) Exit\n")
@@ -163,7 +166,6 @@ def read_options():
 if __name__ == "__main__":
     all_trainee_dict = {}
 
-
     while True:
         option = read_options()
 
@@ -171,29 +173,29 @@ if __name__ == "__main__":
             print("The user wants to add an Trainee")
             trainee_object = create_trainee()
 
-            # trainee_id = read_trainee_id()
             trainee_id = trainee_object.get_sparta_id()
             all_trainee_dict[trainee_id] = trainee_object
             print(all_trainee_dict.get(trainee_id))
-            #log_file.write("Trainee Added")
+
+
             save_to_json()
+
         elif option == "remove":
             print("The user wants to remove an trainee")
             trainee_id = read_trainee_id()
             del all_trainee_dict[trainee_id]
-            # log_file.write("Employee remove")
+
 
         elif option == "list":
             print("The user wants a list of the trainee")
             print_all_trainee_data()
-            # log_file.write("Employee list")
+            load_from_json()
 
         elif option == "save":
             save_to_json()
 
         elif option == "load":
-           # print("5")
-           # trainee_dict = {}
+
             load_from_json()
 
         elif option == "exit":
