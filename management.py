@@ -136,7 +136,7 @@ def save_to_json():
     temp_dict_of_dict = {}
     for trainee_id in all_trainee_dict:
         trainee_obj = all_trainee_dict[trainee_id]
-        trainee_dict = trainee_obj.__dict__
+        trainee_dict = trainee_obj.__dict__# it contains all the attributes which describe the object in question. It can be used to alter or read the attributes
         temp_dict_of_dict[trainee_id] = trainee_dict
 
     with open("data.json", "w+") as data_file:

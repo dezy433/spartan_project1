@@ -2,8 +2,8 @@ class Spartan:
 
     def __init__(self, s_id, f_name, l_name, b_year, b_month, b_day, s_course, s_stream):
         self.sparta_id = s_id
-        self.first_name = f_name
-        self.last_name = l_name
+        self.first_name = f_name  #encapsulation
+        self.last_name = l_name     #We use getters & setters to add validation logic around getting and setting a value.
         self.birth_year = b_year
         self.birth_month = b_month
         self.birth_day = b_day
