@@ -10,10 +10,11 @@ def home_page():
     description = (welcome+"\n"+tutorial)
 
     return description
+#http:127.0.0.1:500/employee_record/1 GET on postman, gets the database
 #method: POST, route: /spartan/remove?id=sparta_id
 @flask_object.route("/spartan/add", methods = ["POST"])
 def trainee_add(spartan_id):#query string
-    data = jsonify(data.json)
+    data = jsonify()
     return data
 @flask_object.route("/spartan/<spartan_id>", methods = ["GET"])
 def trainee_getter(spartan_id):#query string
