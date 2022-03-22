@@ -13,23 +13,6 @@ def home_page():
     description = (welcome+"\n"+tutorial)
 
     return description
-#http:127.0.0.1:500/employee_record/1 GET on postman, gets the database
-#method: POST, route: /spartan/remove?id=sparta_id
-
-@flask_object.route("/echo",methods = ["GET"])
-def echo_func():
-
-    name_var = request.args.get("name")
-    last_name_var = request.args.get("last_name")
-    return f"Reply to the user {name_var}- Positon is {last_name_var}"
-"""
-@flask_object.route("/spartan/<spartan_id>",methods = ["GET"])
-def trainee_getter(spartan_id):
-    return f"You're getting info on id{spartan_id}"
-"""
-@flask_object.route("/spartan_record/<spartan_id>", methods = ["GET"])
-def employee_record_getter(spartan_id):
-    print("t")
 
 def create_trainee(trainee_id, trainee_first_name, trainee_last_name, trainee_birth_year, trainee_birth_month, trainee_birth_day, trainee_course, trainee_stream):
 
